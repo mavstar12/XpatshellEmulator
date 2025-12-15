@@ -21,7 +21,7 @@ import okhttp3.*
 import org.json.JSONObject
 import java.util.concurrent.TimeUnit
 
-class MainActivity : AppCompatActivity() {
+class Renamed : AppCompatActivity() {
 
     private lateinit var webView: WebView
     private var webSocket: WebSocket? = null

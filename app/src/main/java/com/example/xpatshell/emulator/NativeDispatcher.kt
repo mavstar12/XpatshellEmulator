@@ -18,7 +18,7 @@ import androidx.core.content.ContextCompat
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
-
+ 
 class NativeDispatcher(
     private val ctx: Context,
     private val callback: (JSONObject) -> Unit

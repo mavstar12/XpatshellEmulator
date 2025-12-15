@@ -16,7 +16,7 @@ import okhttp3.*
 import org.json.JSONObject
 import java.util.concurrent.TimeUnit
 
-class MainActivity : ComponentActivity() {
+class MainMenu : ComponentActivity() {
 
     private val okHttpClient by lazy {
         OkHttpClient.Builder()

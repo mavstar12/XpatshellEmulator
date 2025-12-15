@@ -1,5 +1,5 @@
 package com.example.xpatshell.emulator
-
+ 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
