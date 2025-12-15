@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 connectWebSocket(wsUrl)
             }
         }
-    }
+    }  
 
     private fun connectWebSocket(wsUrl: String) {
         val request = Request.Builder().url(wsUrl).build()

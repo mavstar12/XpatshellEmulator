@@ -33,7 +33,7 @@ class NativeDispatcher(
         const val REQ_LOCATION = 1003
         const val REQ_SMS = 1004
     }
-
+   
     fun dispatch(id: String, module: String, action: String, params: JSONObject) {
         val response = JSONObject().apply {
             put("id", id)

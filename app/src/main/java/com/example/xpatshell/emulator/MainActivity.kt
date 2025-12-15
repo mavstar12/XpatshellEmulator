@@ -45,7 +45,7 @@ fun XpatshellScreen() {
         )
         Spacer(modifier = Modifier.height(24.dp))
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher), // replace with your image
+            painter = painterResource(id = R.mipmap.ic_launcher), // replace with your image
             contentDescription = "Xpatshell Logo",
             modifier = Modifier.size(120.dp)
         )
