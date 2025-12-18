@@ -5,30 +5,30 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.BorderStroke
-
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        WindowCompat.setDecorFitsSystemWindows(window, false)
 
+        // Make the app full screen
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(
             window,
             window.decorView
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
             WindowInsetsCompat.Type.statusBars() or
             WindowInsetsCompat.Type.navigationBars()
         )
-        
+
         setContent {
             XpatshellScreen()
         }
@@ -58,6 +58,7 @@ fun XpatshellScreen() {
                 .fillMaxSize()
                 .background(Color.White)
         ) {
+            // Header row
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -77,9 +78,13 @@ fun XpatshellScreen() {
                     fontWeight = FontWeight.Bold
                 )
             }
-    
+
+            // Input and button area
             Column(
-                modifier = Modifier.padding(16.dp).background(color.grey)
+                modifier = Modifier
+                    .padding(16.dp)
+                    .background(Color.Gray, shape = RoundedCornerShape(8.dp))
+                    .padding(16.dp)
             ) {
                 Text(
                     text = "Enter your app preview url starting with 'xpss://'",
@@ -101,12 +106,19 @@ fun XpatshellScreen() {
                     },
                     shape = RoundedCornerShape(5.dp),
                     border = BorderStroke(1.dp, Color.White),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = Color.Black
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(48.dp)!/
-                        .background(Color.Black)
+                        .height(48.dp)
                 ) {
-                    Text("Load Url", fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
+                    Text(
+                        "Load Url",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.White
+                    )
                 }
             }
         }
