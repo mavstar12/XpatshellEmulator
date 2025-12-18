@@ -43,65 +43,67 @@ class MainActivity : ComponentActivity() {
 fun XpatshellScreen() {
     var url by remember { mutableStateOf("") }
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
+            .consumeWindowInsets(WindowInsets.systemBars)
     ) {
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = "Xpatshell Emulator",
-                fontSize = 28.sp,
-                color = Color.Black
-            )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Image(
-                painter = painterResource(id = R.mipmap.ic_launcher),
-                contentDescription = "Xpatshell Logo",
-                modifier = Modifier.size(30.dp)
-            )
-        }
-
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White)
         ) {
-            Text(
-                text = "Enter your app preview url starting with 'xpss://'",
-                fontSize = 20.sp,
-                color = Color.Black
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            TextField(
-                value = url,
-                onValueChange = { url = it },
-                singleLine = true,
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp)
-                    .border(1.dp, Color.Gray)
-            )
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Button(
-                onClick = {
-                    // Load URL logic here
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
+                    .padding(10.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Load Url", fontSize = 18.sp)
+                Image(
+                    painter = painterResource(id = R.mipmap.ic_launcher),
+                    contentDescription = "Xpatshell Logo",
+                    modifier = Modifier.size(40.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "Xpatshell Emulator",
+                    fontSize = 28.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+    
+            Column(
+                modifier = Modifier.padding(16.dp).background(color.grey)
+            ) {
+                Text(
+                    text = "Enter your app preview url starting with 'xpss://'",
+                    fontSize = 17.sp,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                OutlinedTextField(
+                    value = url,
+                    onValueChange = { url = it },
+                    singleLine = true,
+                    placeholder = { Text("xpss://123.45.6.78:3000") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(30.dp))
+                OutlinedButton(
+                    onClick = {
+                        // Load URL logic here
+                    },
+                    shape = RoundedCornerShape(5.dp),
+                    border = BorderStroke(1.dp, color.White),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                        .background(color.Black)
+                ) {
+                    Text("Load Url", fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
+                }
             }
         }
     }
