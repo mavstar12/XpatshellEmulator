@@ -18,6 +18,10 @@ import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.BorderStroke
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,11 +100,11 @@ fun XpatshellScreen() {
                         // Load URL logic here
                     },
                     shape = RoundedCornerShape(5.dp),
-                    border = BorderStroke(1.dp, color.White),
+                    border = BorderStroke(1.dp, Color.White),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(48.dp)
-                        .background(color.Black)
+                        .height(48.dp)!/
+                        .background(Color.Black)
                 ) {
                     Text("Load Url", fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
                 }
