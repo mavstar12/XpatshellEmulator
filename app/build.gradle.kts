@@ -56,5 +56,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:1.6.0")
     debugImplementation("androidx.compose.ui:ui-tooling:1.6.0")
     implementation("androidx.core:core-ktx:1.13.1")
-implementation("androidx.compose.foundation:foundation:1.6.0")
+    implementation("androidx.compose.foundation:foundation:1.6.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 }
