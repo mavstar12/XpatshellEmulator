@@ -124,24 +124,38 @@ fun XpatshellScreen() {
 }
 
 @Composable
-fun FullScreenWebView(
-    url: String,
-    onWebViewCreated: (WebView) -> Unit = {}
-) {
+fun FullScreenWebViewWithWS(url: String) {
+    val context = LocalContext.current
+    var webViewRef by remember { mutableStateOf<WebView?>(null) }
+
+    DisposableEffect(url) {
+        val wsUrl = url.replace("http://", "ws://")
+        val client = OkHttpClient()
+
+        val request = Request.Builder().url(wsUrl).build()
+        val ws = client.newWebSocket(request, object : WebSocketListener() {
+            override fun onMessage(webSocket: WebSocket, text: String) {
+                if (text == "reload") {
+                    webViewRef?.post { webViewRef?.reload() }
+                }
+            }
+        })
+
+        onDispose {
+            ws.close(1000, "Screen disposed")
+        }
+    }
+
     AndroidView(
-        factory = { context ->
-            WebView(context).apply {
-                layoutParams = android.view.ViewGroup.LayoutParams(
-                    android.view.ViewGroup.LayoutParams.MATCH_PARENT,
-                    android.view.ViewGroup.LayoutParams.MATCH_PARENT
-                )
+        factory = {
+            WebView(it).apply {
                 webViewClient = WebViewClient()
                 settings.javaScriptEnabled = true
                 loadUrl(url)
-
-                onWebViewCreated(this)
+                webViewRef = this
             }
         },
         modifier = Modifier.fillMaxSize()
     )
 }
+
